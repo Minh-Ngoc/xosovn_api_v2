@@ -1,0 +1,553 @@
+[{
+  "_id": {
+    "$oid": "65a0a995aa7ea10ac4d16961"
+  },
+  "role": {
+    "$oid": "659ba7c62b611171a5347a97"
+  },
+  "action": [
+    "manage"
+  ],
+  "subject": "all",
+  "createdAt": {
+    "$date": "2025-05-02T04:46:29.779Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T04:46:29.779Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89d8"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "user",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.562Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.532Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89db"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "role",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.564Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89de"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "menu",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.565Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.533Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89e1"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "taxonomy",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.566Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.534Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89e4"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "post",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.568Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.534Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89e7"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "schema",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.569Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.535Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89ea"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "page",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.570Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.535Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89ed"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "social",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.571Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "68149945c4a961cd55ff89f0"
+  },
+  "role": {
+    "$oid": "66fb922a7970c059520cdbcd"
+  },
+  "action": [],
+  "subject": "sitemap",
+  "createdAt": {
+    "$date": "2025-05-02T10:07:01.572Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-02T10:09:24.536Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920a55e23bb265401916"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [],
+  "subject": "user",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.000Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.000Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb265401918"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [],
+  "subject": "role",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.006Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.006Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb26540191a"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "menu",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.008Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.008Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb26540191c"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "taxonomy",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.008Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.008Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb26540191e"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "post",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.009Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.009Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb265401920"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "schema",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.010Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.010Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb265401922"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "page",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.011Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.011Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb265401924"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [],
+  "subject": "social",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.012Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.012Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825920b55e23bb265401926"
+  },
+  "role": {
+    "$oid": "6825920a55e23bb265401914"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "sitemap",
+  "createdAt": {
+    "$date": "2025-05-15T07:04:43.012Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:04:43.012Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401930"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "user",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.241Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.241Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401932"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [],
+  "subject": "role",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.242Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.242Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401934"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "menu",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.243Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.243Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401936"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "taxonomy",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.244Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.244Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401938"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "post",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.246Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.246Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb26540193a"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "schema",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.247Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.247Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb26540193c"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "page",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.248Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.248Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb26540193e"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "social",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.249Z"
+  },
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "6825921c55e23bb265401940"
+  },
+  "role": {
+    "$oid": "6825921c55e23bb26540192e"
+  },
+  "action": [
+    "create",
+    "read",
+    "update",
+    "delete"
+  ],
+  "subject": "sitemap",
+  "createdAt": {
+    "$date": "2025-05-15T07:05:00.249Z"
+  },
+  "updatedAt": {
+    "$date": "2025-05-15T07:05:00.249Z"
+  },
+  "__v": 0
+}]

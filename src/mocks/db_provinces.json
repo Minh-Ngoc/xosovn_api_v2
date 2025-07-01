@@ -1,0 +1,218 @@
+[
+  {
+    "_id": 1,
+    "name": "Miền Bắc",
+    "region": 1,
+    "nameNoSign": "mien-bac"
+  },
+  {
+    "_id": 33,
+    "name": "TP. HCM",
+    "region": 3,
+    "nameNoSign": "hcm"
+  },
+  {
+    "_id": 16,
+    "name": "An Giang",
+    "region": 3,
+    "nameNoSign": "an-giang"
+  },
+  {
+    "_id": 19,
+    "name": "Bình Dương",
+    "region": 3,
+    "nameNoSign": "binh-duong"
+  },
+  {
+    "_id": 17,
+    "name": "Bạc Liêu",
+    "region": 3,
+    "nameNoSign": "bac-lieu"
+  },
+  {
+    "_id": 20,
+    "name": "Bình Phước",
+    "region": 3,
+    "nameNoSign": "binh-phuoc"
+  },
+  {
+    "_id": 18,
+    "name": "Bến Tre",
+    "region": 3,
+    "nameNoSign": "ben-tre"
+  },
+  {
+    "_id": 21,
+    "name": "Bình Thuận",
+    "region": 3,
+    "nameNoSign": "binh-thuan"
+  },
+  {
+    "_id": 22,
+    "name": "Cà Mau",
+    "region": 3,
+    "nameNoSign": "ca-mau"
+  },
+  {
+    "_id": 23,
+    "name": "Cần Thơ",
+    "region": 3,
+    "nameNoSign": "can-tho"
+  },
+  {
+    "_id": 37,
+    "name": "Đà Lạt",
+    "region": 3,
+    "nameNoSign": "da-lat"
+  },
+  {
+    "_id": 25,
+    "name": "Đồng Nai",
+    "region": 3,
+    "nameNoSign": "dong-nai"
+  },
+  {
+    "_id": 26,
+    "name": "Đồng Tháp",
+    "region": 3,
+    "nameNoSign": "dong-thap"
+  },
+  {
+    "_id": 27,
+    "name": "Hậu Giang",
+    "region": 3,
+    "nameNoSign": "hau-giang"
+  },
+  {
+    "_id": 28,
+    "name": "Kiên Giang",
+    "region": 3,
+    "nameNoSign": "kien-giang"
+  },
+  {
+    "_id": 29,
+    "name": "Long An",
+    "region": 3,
+    "nameNoSign": "long-an"
+  },
+  {
+    "_id": 30,
+    "name": "Sóc Trăng",
+    "region": 3,
+    "nameNoSign": "soc-trang"
+  },
+  {
+    "_id": 32,
+    "name": "Tiền Giang",
+    "region": 3,
+    "nameNoSign": "tien-giang"
+  },
+  {
+    "_id": 31,
+    "name": "Tây Ninh",
+    "region": 3,
+    "nameNoSign": "tay-ninh"
+  },
+  {
+    "_id": 34,
+    "name": "Trà Vinh",
+    "region": 3,
+    "nameNoSign": "tra-vinh"
+  },
+  {
+    "_id": 35,
+    "name": "Vĩnh Long",
+    "region": 3,
+    "nameNoSign": "vinh-long"
+  },
+  {
+    "_id": 36,
+    "name": "Vũng Tàu",
+    "region": 3,
+    "nameNoSign": "vung-tau"
+  },
+  {
+    "_id": 2,
+    "name": "Bình Định",
+    "region": 2,
+    "nameNoSign": "binh-dinh"
+  },
+  {
+    "_id": 4,
+    "name": "Đắk Lắk",
+    "region": 2,
+    "nameNoSign": "dac-lac"
+  },
+  {
+    "_id": 3,
+    "name": "Đà Nẵng",
+    "region": 2,
+    "nameNoSign": "da-nang"
+  },
+  {
+    "_id": 5,
+    "name": "Đắk Nông",
+    "region": 2,
+    "nameNoSign": "dac-nong"
+  },
+  {
+    "_id": 6,
+    "name": "Gia Lai",
+    "region": 2,
+    "nameNoSign": "gia-lai"
+  },
+  {
+    "_id": 8,
+    "name": "Khánh Hòa",
+    "region": 2,
+    "nameNoSign": "khanh-hoa"
+  },
+  {
+    "_id": 9,
+    "name": "Kon Tum",
+    "region": 2,
+    "nameNoSign": "kon-tum"
+  },
+  {
+    "_id": 10,
+    "name": "Ninh Thuận",
+    "region": 2,
+    "nameNoSign": "ninh-thuan"
+  },
+  {
+    "_id": 11,
+    "name": "Phú Yên",
+    "region": 2,
+    "nameNoSign": "phu-yen"
+  },
+  {
+    "_id": 12,
+    "name": "Quảng Bình",
+    "region": 2,
+    "nameNoSign": "quang-binh"
+  },
+  {
+    "_id": 14,
+    "name": "Quảng Ngãi",
+    "region": 2,
+    "nameNoSign": "quang-ngai"
+  },
+  {
+    "_id": 13,
+    "name": "Quảng Nam",
+    "region": 2,
+    "nameNoSign": "quang-nam"
+  },
+  {
+    "_id": 15,
+    "name": "Quảng Trị",
+    "region": 2,
+    "nameNoSign": "quang-tri"
+  },
+  {
+    "_id": 7,
+    "name": "Huế",
+    "region": 2,
+    "nameNoSign": "hue"
+  }
+]
