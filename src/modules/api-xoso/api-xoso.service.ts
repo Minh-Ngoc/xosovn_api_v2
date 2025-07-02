@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { HttpService } from '@nestjs/axios';
 import { lastValueFrom } from 'rxjs';
 import { GetPaginationKqxsDto } from '../kqxs/dto/get-pagination-kqxs.dto';
+import { GetKqxsTinhDto } from '../kqxs/dto/get-kqxs-tinh.dto';
 
 @Injectable()
 export class ApiXosoService {
@@ -59,7 +60,7 @@ export class ApiXosoService {
     ).then((res) => res.data);
   }
 
-  async getKqxsTinh(query: any) {
+  async getKqxsTinh(query: GetKqxsTinhDto) {
     return lastValueFrom(
       this.httpService.get(`${this.baseUrl}/tinh`, { params: query }),
     ).then((res) => res.data);
