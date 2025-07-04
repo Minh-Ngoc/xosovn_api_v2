@@ -1,9 +1,4 @@
-import {
-  BadRequestException,
-  Injectable,
-  InternalServerErrorException,
-  Logger,
-} from '@nestjs/common';
+import { BadRequestException, Injectable, Logger } from '@nestjs/common';
 import { Kqxs, KqxsDocument } from './kqxs.entity';
 import { Model } from 'mongoose';
 import { InjectModel } from '@nestjs/mongoose';
@@ -692,6 +687,63 @@ export class KqxsService {
     }
   }
 
+  async getKQXSTinh(date: string, provinceId: number) {
+    try {
+      const thisProvince = await this.provinceService.findOne({
+        _id: provinceId,
+      });
+
+      if (!thisProvince) {
+        throw new BadRequestException('Province Not Found!');
+      }
+
+      const kqxs = await this.kqxsModel
+        .find({
+          provinceId: provinceId,
+          dayPrize: date,
+          region: thisProvince?.region,
+        })
+        .exec();
+
+      if (kqxs?.length) {
+        const result = {
+          provinceId,
+          serialDB: {},
+          listXSTT: kqxs,
+          resultHead: kqxs.reduce((r, a) => {
+            r[a.firstNumber] = r[a.firstNumber] || [];
+            r[a.firstNumber].push({ loto: a.loto, prizeId: a.prizeId });
+            return r;
+          }, {}),
+          resultEnd: kqxs.reduce((r, a) => {
+            r[a.lastNumber] = r[a.lastNumber] || [];
+            r[a.lastNumber].push({ loto: a.loto, prizeId: a.prizeId });
+            return r;
+          }, {}),
+        };
+
+        return { result };
+      }
+
+      const { result } = await this.apiService.getKqxsTinh({
+        date,
+        province: provinceId,
+      });
+
+      if (result?.length) {
+        return { result };
+      }
+
+      return {
+        isSuccessed: false,
+        resultObj: [],
+      };
+    } catch (error) {
+      console.log('error: ', error);
+      throw error;
+    }
+  }
+
   // async getKQXSTinh(date: string, provinceId: number) {
   //   try {
   //     const listResult = [];
@@ -848,14 +900,14 @@ export class KqxsService {
 
       const result = await Promise.all(
         dates?.map(async (date) => {
-          const { kqxs } = await this.getKqxsTinh({
+          const { result } = await this.getKqxsTinh({
             date,
             province,
           });
 
           return {
             isSuccessed: true,
-            resultObj: kqxs,
+            resultObj: result,
             date,
           };
         }),
@@ -863,6 +915,8 @@ export class KqxsService {
 
       return { result };
     } catch (error) {
+      console.log('error: ', error);
+
       throw error;
     }
   }
@@ -870,49 +924,49 @@ export class KqxsService {
   async getKqxsTinh(query: GetKqxsTinhDto) {
     const { province, date } = query;
 
-    if (!province) {
-      throw new BadRequestException('Missing or invalid province');
-    }
-
     try {
-      const inputDate =
-        date && date !== 'undefined' ? date : this.addingZeroToDate(new Date());
-      const { kqxs: result } = await this.apiService.getKqxsTinh(query);
+      // const inputDate = date && date !== 'undefined' ? date : this.addingZeroToDate(new Date());
+      const { result } = await this.getKQXSTinh(date, province);
 
       // Nếu có kết quả đúng ngày, trả về luôn
-      if (result?.length > 0) {
-        return { kqxs: result };
+      if (result?.listXSTT?.length) {
+        return { result };
       }
+
+      return {
+        result: {
+          isSuccessed: false,
+          resultObj: {},
+          date,
+        },
+      };
 
       // Nếu không có, tìm ngày gần nhất có dữ liệu
-      const xsByProvince = await this.kqxsModel
-        .find({ provinceId: province })
-        .sort({ dayPrize: -1 }) // sắp xếp giảm dần để lấy ngày gần nhất nhanh hơn
-        .exec();
+      // const xsByProvince = await this.kqxsModel
+      //   .find({ provinceId: province })
+      //   .sort({ dayPrize: -1 }) // sắp xếp giảm dần để lấy ngày gần nhất nhanh hơn
+      //   .exec();
 
-      if (!xsByProvince.length) {
-        return { kqxs: [] };
-      }
+      // if (!xsByProvince.length) {
+      //   return { result: [] };
+      // }
 
-      // Tìm ngày gần nhất nhỏ hơn hoặc bằng ngày yêu cầu
-      const closest = this.findClosestDate(
-        inputDate,
-        xsByProvince.map((x) => x.dayPrize),
-      );
+      // // Tìm ngày gần nhất nhỏ hơn hoặc bằng ngày yêu cầu
+      // const closest = this.findClosestDate(
+      //   inputDate,
+      //   xsByProvince.map((x) => x.dayPrize),
+      // );
 
-      if (!closest) {
-        return { kqxs: [] };
-      }
+      // if (!closest) {
+      //   return { result: [] };
+      // }
 
-      const kqxs = await this.getKqxsTinh({
-        date: closest,
-        province,
-      });
+      // const { result: kqxs } = await this.getKQXSTinh(closest, province);
 
-      return { kqxs };
+      // return { result: kqxs };
     } catch (error) {
       console.error(error);
-      throw new InternalServerErrorException();
+      throw error;
     }
   }
 
@@ -1301,7 +1355,7 @@ export class KqxsService {
       return { topByRegion, allByHead, allByTail };
     } catch (error) {
       console.error('Error in getResultTanSuat:', error);
-      throw new InternalServerErrorException('Failed to get tan suat results');
+      throw error;
     }
   }
 
@@ -1365,7 +1419,7 @@ export class KqxsService {
     } catch (error) {
       // Tùy theo cách bạn xử lý lỗi
       console.log('error: ', error);
-      throw new InternalServerErrorException('Failed to get result form lo');
+      throw error;
     }
   }
 
