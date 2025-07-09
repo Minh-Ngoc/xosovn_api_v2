@@ -193,6 +193,23 @@ export class VietlottService {
       };
     }
 
+    const date = moment();
+    if (!data && date.format('DD-MM-YYYY') === today) {
+      const yesterday = date.clone().subtract(1, 'day').format('DD-MM-YYYY');
+      const [createDate] = this.createTueThuSatDatesList({
+        date: yesterday,
+        limit: 1,
+        page: 1,
+      });
+
+      const response = await this.getDataPower655(createDate);
+
+      return {
+        isSuccessed: !!response,
+        resultObj: response || [],
+      };
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 500));
     const retryResult = await this.getDataPower655(today);
 
@@ -217,11 +234,21 @@ export class VietlottService {
         dates?.map(async (date) => {
           const response = await this.getPower655(date);
 
-          return { ...response, date };
+          return { ...response, date: response?.resultObj?.dayPrize };
         }),
       );
 
-      return { result };
+      const dayPrizeMap = new Map<string, any>();
+
+      for (const item of result) {
+        const prizeDate = item?.resultObj?.dayPrize;
+        if (!prizeDate || dayPrizeMap.has(prizeDate)) continue;
+        dayPrizeMap.set(prizeDate, item);
+      }
+
+      const filteredResults = Array.from(dayPrizeMap.values());
+
+      return { result: filteredResults };
     } catch (error) {
       throw error;
     }
@@ -290,11 +317,17 @@ export class VietlottService {
         .eq(0)
         .html();
 
+      // const jackpotWinner = trunggiai
+      //   .find('tr')
+      //   .eq(2)
+      //   .find('td:nth-child(3) b')
+      //   .eq(0)
+      //   .html();
+
       const jackpotWinner = trunggiai
         .find('tr')
-        .eq(2)
-        .find('td:nth-child(3) b')
-        .eq(0)
+        .filter((i, el) => $(el).find('td').first().text().trim() === 'J.pot')
+        .find('em')
         .html();
 
       const match5 = trunggiai
@@ -370,6 +403,7 @@ export class VietlottService {
     }
 
     const result = await this.mega645Model.findOne({ dayPrize: date }).exec();
+
     await this.cacheManager.set(mega645Key, JSON.stringify(result || {}), 1800); // TTL 30 phút
 
     return result;
@@ -391,6 +425,23 @@ export class VietlottService {
       return {
         isSuccessed: true,
         resultObj: data || [],
+      };
+    }
+
+    const date = moment();
+    if (!data && date.format('DD-MM-YYYY') === today) {
+      const yesterday = date.clone().subtract(1, 'day').format('DD-MM-YYYY');
+      const [createDate] = this.createWedFriSunDatesList({
+        date: yesterday,
+        limit: 1,
+        page: 1,
+      });
+
+      const response = await this.getDataMega645(createDate);
+
+      return {
+        isSuccessed: !!response,
+        resultObj: response || [],
       };
     }
 
@@ -418,11 +469,21 @@ export class VietlottService {
         dates?.map(async (date) => {
           const response = await this.getMega645(date);
 
-          return { ...response, date };
+          return { ...response, date: response?.resultObj?.dayPrize };
         }),
       );
 
-      return { result };
+      const dayPrizeMap = new Map<string, any>();
+
+      for (const item of result) {
+        const prizeDate = item?.resultObj?.dayPrize;
+        if (!prizeDate || dayPrizeMap.has(prizeDate)) continue;
+        dayPrizeMap.set(prizeDate, item);
+      }
+
+      const filteredResults = Array.from(dayPrizeMap.values());
+
+      return { result: filteredResults };
     } catch (error) {
       throw error;
     }
@@ -561,6 +622,23 @@ export class VietlottService {
       };
     }
 
+    const date = moment();
+    if (!data && date.format('DD-MM-YYYY') === today) {
+      const yesterday = date.clone().subtract(1, 'day').format('DD-MM-YYYY');
+      const [createDate] = this.createTueThuSatDatesList({
+        date: yesterday,
+        limit: 1,
+        page: 1,
+      });
+
+      const response = await this.getDataMax3DPro(createDate);
+
+      return {
+        isSuccessed: !!response,
+        resultObj: response || [],
+      };
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 500));
     const retryResult = await this.getDataMax3DPro(today);
 
@@ -585,11 +663,21 @@ export class VietlottService {
         dates?.map(async (date) => {
           const response = await this.getMax3DPro(date);
 
-          return { ...response, date };
+          return { ...response, date: response?.resultObj?.dayPrize };
         }),
       );
 
-      return { result };
+      const dayPrizeMap = new Map<string, any>();
+
+      for (const item of result) {
+        const prizeDate = item?.resultObj?.dayPrize;
+        if (!prizeDate || dayPrizeMap.has(prizeDate)) continue;
+        dayPrizeMap.set(prizeDate, item);
+      }
+
+      const filteredResults = Array.from(dayPrizeMap.values());
+
+      return { result: filteredResults };
     } catch (error) {
       throw error;
     }
@@ -740,6 +828,23 @@ export class VietlottService {
       };
     }
 
+    const date = moment();
+    if (!data && date.format('DD-MM-YYYY') === today) {
+      const yesterday = date.clone().subtract(1, 'day').format('DD-MM-YYYY');
+      const [createDate] = this.createMonWedFriSunDatesList({
+        date: yesterday,
+        limit: 1,
+        page: 1,
+      });
+
+      const response = await this.getDataMax3D(createDate);
+
+      return {
+        isSuccessed: !!response,
+        resultObj: response || [],
+      };
+    }
+
     await new Promise((resolve) => setTimeout(resolve, 500));
     const retryResult = await this.getDataMax3D(today);
 
@@ -764,11 +869,21 @@ export class VietlottService {
         dates?.map(async (date) => {
           const response = await this.getMax3D(date);
 
-          return { ...response, date };
+          return { ...response, date: response?.resultObj?.dayPrize };
         }),
       );
 
-      return { result };
+      const dayPrizeMap = new Map<string, any>();
+
+      for (const item of result) {
+        const prizeDate = item?.resultObj?.dayPrize;
+        if (!prizeDate || dayPrizeMap.has(prizeDate)) continue;
+        dayPrizeMap.set(prizeDate, item);
+      }
+
+      const filteredResults = Array.from(dayPrizeMap.values());
+
+      return { result: filteredResults };
     } catch (error) {
       throw error;
     }
