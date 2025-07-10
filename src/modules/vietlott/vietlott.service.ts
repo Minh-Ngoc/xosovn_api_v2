@@ -317,14 +317,14 @@ export class VietlottService {
         .eq(0)
         .html();
 
-      // const jackpotWinner = trunggiai
-      //   .find('tr')
-      //   .eq(2)
-      //   .find('td:nth-child(3) b')
-      //   .eq(0)
-      //   .html();
-
       const jackpotWinner = trunggiai
+        .find('tr')
+        .eq(2)
+        .find('td:nth-child(3) b')
+        .eq(0)
+        .html();
+
+      const jackpotWinnerReplace = trunggiai
         .find('tr')
         .filter((i, el) => $(el).find('td').first().text().trim() === 'J.pot')
         .find('em')
@@ -375,7 +375,7 @@ export class VietlottService {
       const dataResult = {
         ket_qua,
         jackpot,
-        jackpotWinner,
+        jackpotWinner: String(jackpotWinner || jackpotWinnerReplace),
         match5,
         match5Winner,
         match4,
