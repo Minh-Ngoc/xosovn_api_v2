@@ -68,28 +68,11 @@ export class KqxsService {
   //   return dates;
   // }
 
-  private findClosestDate(target: string, dates: string[]): string | null {
-    const targetDate = new Date(this.reverseDate(target));
-    let closest: string | null = null;
-    let minDiff = Infinity;
-
-    for (const d of dates) {
-      const diff =
-        targetDate.getTime() - new Date(this.reverseDate(d)).getTime();
-      if (diff >= 0 && diff < minDiff) {
-        minDiff = diff;
-        closest = d;
-      }
-    }
-
-    return closest;
-  }
-
   createSameWeekdays(params: GetPaginationKqxsDto) {
     const { date, limit, page } = params;
     const startDate = moment(date, 'DD-MM-YYYY');
-    const weekdayNumber = moment(date, 'DD-MM-YYYY').isoWeekday(); // 7 là Chủ nhật
-    const validWeekdays = [weekdayNumber]; // Thứ Tư, Thứ Bảy
+    const weekdayNumber = moment(date, 'DD-MM-YYYY').isoWeekday();
+    const validWeekdays = [weekdayNumber];
     const allDates: string[] = [];
 
     const current = startDate.clone();
@@ -632,6 +615,7 @@ export class KqxsService {
 
         if (checkKQ.length > 0) {
           const resKQXS = {
+            provinceId: el._id,
             serialDB: {},
             listXSTT: checkKQ,
             resultHead: checkKQ.reduce((r, a) => {
@@ -744,73 +728,9 @@ export class KqxsService {
     }
   }
 
-  // async getKQXSTinh(date: string, provinceId: number) {
-  //   try {
-  //     const listResult = [];
-  //     const checkKQ = await this.kqxsModel
-  //       .find({
-  //         provinceId: provinceId,
-  //         dayPrize: date,
-  //       })
-  //       .exec();
-
-  //     const resKQXS: any = {
-  //       serialDB: {},
-  //       listXSTT: [],
-  //       resultHead: {},
-  //       resultEnd: {},
-  //     };
-
-  //     if (checkKQ.length !== 0) {
-  //       const thisProvince = await this.provinceService.findOne({
-  //         _id: provinceId,
-  //       });
-
-  //       const resultHead = await checkKQ.reduce(function (r, a) {
-  //         r[a.firstNumber] = r[a.firstNumber] || [];
-  //         r[a.firstNumber].push({ loto: a.loto, prizeId: a.prizeId });
-  //         return r;
-  //       }, Object.create(null));
-
-  //       const resultEnd = await checkKQ.reduce(function (r, a) {
-  //         r[a.lastNumber] = r[a.lastNumber] || [];
-  //         r[a.lastNumber].push({ loto: a.loto, prizeId: a.prizeId });
-  //         return r;
-  //       }, Object.create(null));
-
-  //       resKQXS.listXSTT = checkKQ;
-  //       resKQXS.resultHead = resultHead;
-  //       resKQXS.resultEnd = resultEnd;
-  //       resKQXS.provinceName = thisProvince.name;
-  //       resKQXS.provinceRegion = thisProvince.region;
-  //       resKQXS.provinceNameNoSign = thisProvince.nameNoSign;
-  //       listResult.push(resKQXS);
-  //     }
-  //     return listResult;
-  //   } catch (error) {
-  //     console.log('error: ', error);
-  //     throw error;
-  //   }
-  // }
-
   async getPaginationXsmn(query: GetPaginationKqxsDto) {
     try {
-      const dates = this.createDatesList(query);
-
-      if (!dates?.length) {
-        return {
-          isSuccessed: false,
-          resultObj: [],
-        };
-      }
-
-      const result = await Promise.all(
-        dates?.map(async (date) => {
-          const response = await this.getXSMN(date);
-
-          return { ...response, date };
-        }),
-      );
+      const { result } = await this.apiService.getPaginationXsmn(query);
 
       return { result };
     } catch (error) {
@@ -820,22 +740,7 @@ export class KqxsService {
 
   async getPaginationXsmt(query: GetPaginationKqxsDto) {
     try {
-      const dates = this.createDatesList(query);
-
-      if (!dates?.length) {
-        return {
-          isSuccessed: false,
-          resultObj: [],
-        };
-      }
-
-      const result = await Promise.all(
-        dates?.map(async (date) => {
-          const response = await this.getXSMT(date);
-
-          return { ...response, date };
-        }),
-      );
+      const { result } = await this.apiService.getPaginationXsmt(query);
 
       return { result };
     } catch (error) {
@@ -845,22 +750,7 @@ export class KqxsService {
 
   async getPaginationXsmb(query: GetPaginationKqxsDto) {
     try {
-      const dates = this.createDatesList(query);
-
-      if (!dates?.length) {
-        return {
-          isSuccessed: false,
-          resultObj: [],
-        };
-      }
-
-      const result = await Promise.all(
-        dates?.map(async (date) => {
-          const response = await this.getXSMB(date);
-
-          return { ...response, date };
-        }),
-      );
+      const { result } = await this.apiService.getPaginationXsmb(query);
 
       return { result };
     } catch (error) {
@@ -870,48 +760,7 @@ export class KqxsService {
 
   async getPaginationTinh(query: GetPaginationKqxsDto) {
     try {
-      const { province } = query;
-
-      let dates = [];
-
-      switch (province) {
-        case 3: // Đà Nẵng
-          dates = this.createWedSatDatesList(query);
-          break;
-
-        case 8: // Khánh Hòa
-          dates = this.createWedSunDatesList(query);
-          break;
-
-        case 33: // TP. Hồ Chí Minh
-          dates = this.createMonSatDatesList(query);
-          break;
-
-        default:
-          dates = this.createSameWeekdays(query);
-      }
-
-      if (!dates?.length) {
-        return {
-          isSuccessed: false,
-          resultObj: [],
-        };
-      }
-
-      const result = await Promise.all(
-        dates?.map(async (date) => {
-          const { result } = await this.getKqxsTinh({
-            date,
-            province,
-          });
-
-          return {
-            isSuccessed: true,
-            resultObj: result,
-            date,
-          };
-        }),
-      );
+      const { result } = await this.apiService.getPaginationTinh(query);
 
       return { result };
     } catch (error) {
@@ -919,6 +768,23 @@ export class KqxsService {
 
       throw error;
     }
+  }
+
+  private findClosestDate(target: string, dates: string[]): string | null {
+    const targetDate = new Date(this.reverseDate(target));
+    let closest: string | null = null;
+    let minDiff = Infinity;
+
+    for (const d of dates) {
+      const diff =
+        targetDate.getTime() - new Date(this.reverseDate(d)).getTime();
+      if (diff >= 0 && diff < minDiff) {
+        minDiff = diff;
+        closest = d;
+      }
+    }
+
+    return closest;
   }
 
   async getKqxsTinh(query: GetKqxsTinhDto) {
