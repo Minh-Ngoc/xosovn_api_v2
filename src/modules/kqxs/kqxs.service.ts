@@ -68,11 +68,33 @@ export class KqxsService {
   //   return dates;
   // }
 
+  getValidWeekdaysForProvince(provinceId: number): number[] {
+    const schedule: Record<number, number[]> = {
+      0: [9, 8, 28, 37, 32], // Chủ nhật
+      1: [11, 7, 22, 26, 33], // Thứ 2
+      2: [4, 13, 17, 18, 36], // Thứ 3
+      3: [8, 3, 23, 25, 30], // Thứ 4
+      4: [2, 12, 15, 16, 21, 31], // Thứ 5
+      5: [6, 10, 19, 34, 35], // Thứ 6
+      6: [3, 5, 14, 33, 20, 27, 29], // Thứ 7
+    };
+
+    const result: number[] = [];
+
+    for (const [weekdayStr, provinceIds] of Object.entries(schedule)) {
+      if (provinceIds.includes(provinceId)) {
+        result.push(Number(weekdayStr));
+      }
+    }
+
+    return result;
+  }
+
   createSameWeekdays(params: GetPaginationKqxsDto) {
-    const { date, limit, page } = params;
+    const { date, limit, page, province } = params;
     const startDate = moment(date, 'DD-MM-YYYY');
-    const weekdayNumber = moment(date, 'DD-MM-YYYY').isoWeekday();
-    const validWeekdays = [weekdayNumber];
+    // const weekdayNumber = moment(date, 'DD-MM-YYYY').isoWeekday(); // 7 là Chủ nhật
+    const validWeekdays = this.getValidWeekdaysForProvince(province);
     const allDates: string[] = [];
 
     const current = startDate.clone();
@@ -760,9 +782,29 @@ export class KqxsService {
 
   async getPaginationTinh(query: GetPaginationKqxsDto) {
     try {
-      const { result } = await this.apiService.getPaginationTinh(query);
+      // const { result } = await this.apiService.getPaginationTinh(query);
+      const { province } = query;
 
-      return { result };
+      let dates = [];
+
+      switch (province) {
+        case 3: // Đà Nẵng
+          dates = this.createWedSatDatesList(query);
+          break;
+
+        case 8: // Khánh Hòa
+          dates = this.createWedSunDatesList(query);
+          break;
+
+        case 33: // TP. Hồ Chí Minh
+          dates = this.createMonSatDatesList(query);
+          break;
+
+        default:
+          dates = this.createSameWeekdays(query);
+      }
+
+      return { dates };
     } catch (error) {
       console.log('error: ', error);
 
